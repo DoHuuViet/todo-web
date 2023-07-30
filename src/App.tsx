@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
+import { Route, Routes } from 'react-router-dom'
 import './App.css';
+import {routePath} from "./routes/path";
+import Todos from "./pages/todos";
 
 function App() {
+  useEffect(() => {
+    //TODO: handle redirect to list todo page if uri is root path
+    // if (location.pathname === routePath.Root) {
+    //     window.location.href = routePath.Todos
+    // }
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <React.Suspense fallback={<></>}>
+          <Routes>
+              <Route
+                  path={routePath.Login}
+                  element={
+                      <React.Suspense fallback={null}>
+                          //TODO: create login component
+                          <div>Login</div>
+                      </React.Suspense>
+                  }
+              />
+              <Route
+                  path={routePath.Login}
+                  element={
+                      <React.Suspense fallback={null}>
+                          //TODO: create register component
+                          <div>Register</div>
+                      </React.Suspense>
+                  }
+              />
+              <Route path={routePath.Todos} element={<Todos />} />
+          </Routes>
+      </React.Suspense>
   );
 }
 
