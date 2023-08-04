@@ -9,6 +9,13 @@ export interface ITodo {
     title: string
     body: string
     isDeleted?: boolean
-    createdBy?: Date
+    dueDate?: Date
     createdAt?: Date
+}
+
+export  interface User{
+    id: number
+    username: string
+    password: string
+    name: string
 }

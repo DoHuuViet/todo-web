@@ -3,6 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css';
 import {routePath} from "./routes/path";
 import Todos from "./pages/todos";
+import Login from "./pages/login/login";
+import Todo from "./pages/todo/todo";
+
 
 function App() {
   useEffect(() => {
@@ -19,8 +22,7 @@ function App() {
                   path={routePath.Login}
                   element={
                       <React.Suspense fallback={null}>
-                          //TODO: create login component
-                          <div>Login</div>
+                          <Login />
                       </React.Suspense>
                   }
               />
@@ -34,6 +36,14 @@ function App() {
                   }
               />
               <Route path={routePath.Todos} element={<Todos />} />
+              <Route
+                  path={routePath.Todo}
+                  element={
+                      <React.Suspense fallback={null}>
+                          <Todo />
+                      </React.Suspense>
+                  }
+              />
           </Routes>
       </React.Suspense>
   );
